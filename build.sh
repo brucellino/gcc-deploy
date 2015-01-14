@@ -21,7 +21,7 @@ mkdir -p $SOFT_DIR
 
 #  Download the source file
 
-if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
+if [[ ! -s $SRC_DIR/$SOURCE_FILE ]] ; then
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
   wget http://mirror.ufs.ac.za/gnu/gnu/$NAME/$NAME-$VERSION/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
