@@ -24,7 +24,7 @@ mkdir -p $SOFT_DIR
 if [[ ! -e $SRC_DIR/$SOURCE_FILE ]] ; then
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
-  wget http://mirror.ufs.ac.za/gnu/gnu/$NAME/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
+  wget http://mirror.ufs.ac.za/gnu/gnu/$NAME/$NAME-$VERSION/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
   tar xvf -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 else
   echo "continuing from previous builds, using source at " $SRC_DIR/$SOURCE_FILE
