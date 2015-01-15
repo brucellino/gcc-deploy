@@ -25,14 +25,14 @@ if [[ ! -s $SRC_DIR/$SOURCE_FILE ]] ; then
   echo "seems like this is the first build - let's get the source"
   mkdir -p $SRC_DIR
   wget http://mirror.ufs.ac.za/gnu/gnu/$NAME/$NAME-$VERSION/$SOURCE_FILE -O $SRC_DIR/$SOURCE_FILE
-  tar xvf -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+  tar xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 else
   echo "continuing from previous builds, using source at " $SRC_DIR/$SOURCE_FILE
-  tar -xvzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
+  tar xzf $SRC_DIR/$SOURCE_FILE -C $WORKSPACE
 fi
 cd $WORKSPACE/$NAME-$VERSION
 
 ./configure --prefix=$SOFT_DIR --with-gmp=$GMP_DIR --with-mpfr=$MPFR_DIR \
 --with-mpc=$MPC_DIR --enable-languages=c,c++,fortran,java --disable-multilib
 
-make -j $CPUS
+make -j 
