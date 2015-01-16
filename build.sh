@@ -1,7 +1,10 @@
 #!/bin/bash
 SOURCE_FILE=$NAME-$VERSION.tar.gz
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
-module load ci
+module avail
+module add ci
+module list
+module avail
 module load gmp/5.1.3
 module load mpfr/3.1.2
 module load mpc/1.0.1
