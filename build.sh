@@ -40,7 +40,7 @@ else
 fi
 cd $WORKSPACE/$NAME-$VERSION
 
-./configure --prefix=$SOFT_DIR --with-gmp=$GMP_DIR --with-mpfr=$MPFR_DIR \
+CFLAGS=-m64 FFLAGS=-m64./ configure --prefix=$SOFT_DIR --with-gmp=$GMP_DIR --with-mpfr=$MPFR_DIR \
 --with-mpc=$MPC_DIR --enable-languages=c,c++,fortran,java --disable-multilib
 
 make
