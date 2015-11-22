@@ -1,5 +1,5 @@
 #!/bin/bash -e
-. /etc/profile.d/modules.#!/bin/sh
+. /etc/profile.d/modules.sh
 
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
