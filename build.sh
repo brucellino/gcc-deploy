@@ -45,7 +45,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 ./configure --prefix=${SOFT_DIR} \
 --with-ncurses=${ncurses_DIR} \
 --with-mpfr=${MPFR_DIR} \
---with-mpc=$MPC_DIR \
+--with-mpc=${MPC_DIR} \
 --enable-languages=c,c++,fortran,java \
 --disable-multilib
 
