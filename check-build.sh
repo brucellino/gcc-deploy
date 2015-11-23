@@ -3,7 +3,7 @@
 
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
 module load ci
-module load ncurses/5.1.3
+#module load ncurses/5.1.3
 module load mpfr/3.1.2
 module load mpc/1.0.1
 cd ${WORKSPACE}/${NAME}-${VERSION}
