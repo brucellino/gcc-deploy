@@ -46,6 +46,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 --with-ncurses=${ncurses_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
+--with-gmp=${GMP_DIR} \
 --enable-languages=c,c++,fortran,java \
 --disable-multilib
 
