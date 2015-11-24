@@ -1,5 +1,5 @@
 #!/bin/bash -e
-. /etc/profile.d/module.sh
+. /etc/profile.d/modules.sh
 
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
 module load ci
