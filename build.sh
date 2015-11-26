@@ -7,9 +7,9 @@ module avail
 module add ci
 module list
 module avail
-module load gmp/5.1.3
-module load mpfr/3.1.2
-module load mpc/1.0.1
+module add gmp/5.1.3
+module add mpfr/3.1.2
+module add mpc/1.0.1
 
 echo ${LD_LIBRARY_PATH}
 echo ${PATH}
