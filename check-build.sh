@@ -11,10 +11,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}
 
 # According to https://gcc.gnu.org/install/test.html
 # should run tests in the objdir of the build.
-make install DESTDIR=${WORKSPACE}/build
 make install
-mkdir -p ${REPO_DIR}
-tar -cvzf ${REPO_DIR}/build.tar.gz -C ${WORKSPACE}/build apprepo
 mkdir -p modules
 (
 cat <<MODULE_FILE
