@@ -3,15 +3,16 @@
 . /etc/profile.d/modules.sh
 echo ${SOFT_DIR}
 module add deploy
+echo ${SOFT_DIR}
 # Now, dependencies
 module add gmp
 module add mpfr
 module add ncurses
 module add mpc
 echo ${SOFT_DIR}
-cd ${WORKSPACE}/${NAME}-${VERSION}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-./configure --prefix=${SOFT_DIR} \
+../configure --prefix=${SOFT_DIR} \
 --with-ncurses=${ncurses_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
@@ -20,7 +21,7 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 --disable-multilib
 make
 make install
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+mkdir -p ${COMPILERS_MODULES}/${NAME}
 
 # Now, create the module file for deployment
 (
@@ -35,8 +36,10 @@ proc ModulesHelp { } {
 prereq mpfr
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/mpc-deploy"
 module add ncurses
+module add gmp
 module add mpfr
 module add mpc
+
 setenv GCC_VERSION $VERSION
 set GCC_DIR $::env(CVMFS_DIR)$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path PATH \$GCC_DIR/include
@@ -50,4 +53,4 @@ setenv FC \$GCC_DIR/bin/gfortran
 setenv F77 \$GCC_DIR/bin/gfortran
 setenv F90 \$GCC_DIR/bin/gfortran
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+) > ${COMPILERS_MODULES}/${NAME}/${VERSION}

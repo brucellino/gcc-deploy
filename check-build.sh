@@ -7,10 +7,10 @@ module load ci
 module add gmp/5.1.3
 module load mpfr/3.1.2
 module load mpc/1.0.1
-cd ${WORKSPACE}/${NAME}-${VERSION}
-
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 # According to https://gcc.gnu.org/install/test.html
 # should run tests in the objdir of the build.
+echo "Running CI install to $SOFT_DIR"
 make install
 mkdir -p modules
 (

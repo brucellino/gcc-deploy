@@ -47,10 +47,11 @@ else
   echo "continuing from previous builds, using source at " ${SRC_DIR}/${SOURCE_FILE}
 fi
 tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
-
-cd ${WORKSPACE}/${NAME}-${VERSION}
-
-./configure --prefix=${SOFT_DIR} \
+# GCC needs to be built outside of the src directory - see
+# https://gcc.gnu.org/install/configure.html
+mkdir ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
+../configure --prefix=${SOFT_DIR} \
 --with-ncurses=${ncurses_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
