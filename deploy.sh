@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 echo ${SOFT_DIR}
@@ -9,7 +9,7 @@ module add mpfr
 module add ncurses
 module add mpc
 echo ${SOFT_DIR}
-cd ${WORKSPACE}/${NAME}-${VERSION}
+cd ${WORKSPACE}/${NAME}-${VERSION}/build
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 ./configure --prefix=${SOFT_DIR} \
 --with-ncurses=${ncurses_DIR} \
@@ -18,6 +18,7 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 --with-gmp=${GMP_DIR} \
 --enable-languages=c,c++,fortran,java \
 --disable-multilib
+make
 make install
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
 
