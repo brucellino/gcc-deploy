@@ -9,7 +9,7 @@ module add mpfr
 module add ncurses
 module add mpc
 echo ${SOFT_DIR}
-cd ${WORKSPACE}/${NAME}-${VERSION}/build
+cd ${WORKSPACE}/${NAME}-${VERSION}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 ./configure --prefix=${SOFT_DIR} \
 --with-ncurses=${ncurses_DIR} \
