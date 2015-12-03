@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 echo ${SOFT_DIR}
