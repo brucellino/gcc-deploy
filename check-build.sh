@@ -22,9 +22,10 @@ proc ModulesHelp { } {
   puts stderr "\\tAdds $NAME ($VERSION.) to your environment."
 }
 module-whatis "Sets the environment for using $NAME ($VERSION.)"
-module load ncurses
-module load mpfr
-module load mpc
+module add ncurses
+module add gmp
+module add mpfr
+module add mpc
 setenv GCC_VERSION $VERSION
 set GCC_DIR /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path PATH \$GCC_DIR/include
