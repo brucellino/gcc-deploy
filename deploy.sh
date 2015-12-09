@@ -43,7 +43,7 @@ module add mpfr
 module add mpc
 
 setenv GCC_VERSION $VERSION
-set GCC_DIR $::env(CVMFS_DIR)$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+set GCC_DIR $::env(CVMFS_DIR)$/::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path PATH \$GCC_DIR/include
 prepend-path PATH \$GCC_DIR/bin
 prepend-path MANPATH \$GCC_DIR/man
