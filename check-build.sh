@@ -28,16 +28,16 @@ module add mpfr
 module add mpc
 setenv GCC_VERSION $VERSION
 setenv GCC_DIR /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path PATH \$GCC_DIR/include
-prepend-path PATH \$GCC_DIR/bin
-prepend-path MANPATH \$GCC_DIR/man
-prepend-path LD_LIBRARY_PATH \$GCC_DIR/lib
-prepend-path LD_LIBRARY_PATH \$GCC_DIR/lib64
-setenv CC \$GCC_DIR/bin/gcc
-setenv GCC \$GCC_DIR/bin/gcc
-setenv FC \$GCC_DIR/bin/gfortran
-setenv F77 \$GCC_DIR/bin/gfortran
-setenv F90 \$GCC_DIR/bin/gfortran
+prepend-path PATH $::env(GCC_DIR)/include
+prepend-path PATH $::env(GCC_DIR)/bin
+prepend-path MANPATH $::env(GCC_DIR)/man
+prepend-path LD_LIBRARY_PATH $::env(GCC_DIR)/lib
+prepend-path LD_LIBRARY_PATH $::env(GCC_DIR)/lib64
+setenv CC $::env(GCC_DIR)/bin/gcc
+setenv GCC $::env(GCC_DIR)/bin/gcc
+setenv FC $::env(GCC_DIR)/bin/gfortran
+setenv F77 $::env(GCC_DIR)/bin/gfortran
+setenv F90 $::env(GCC_DIR)/bin/gfortran
 MODULE_FILE
 ) > modules/${VERSION}
 mkdir -p ${COMPILERS_MODULES}/${NAME}
