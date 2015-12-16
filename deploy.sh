@@ -42,16 +42,15 @@ module add mpfr
 module add mpc
 
 setenv GCC_VERSION $VERSION
-set GCC_DIR $::env(CVMFS_DIR)$/::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path PATH \$GCC_DIR/include
-prepend-path PATH \$GCC_DIR/bin
-prepend-path MANPATH \$GCC_DIR/man
-prepend-path LD_LIBRARY_PATH \$GCC_DIR/lib
-prepend-path LD_LIBRARY_PATH \$GCC_DIR/lib64
-setenv CC \$GCC_DIR/bin/gcc
-setenv GCC \$GCC_DIR/bin/gcc
-setenv FC \$GCC_DIR/bin/gfortran
-setenv F77 \$GCC_DIR/bin/gfortran
-setenv F90 \$GCC_DIR/bin/gfortran
+setenv GCC_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv CFLAGS ${CFLAGS} -I${GCC_DIR}/include -L${GCC_DIR}/lib -L${GCC_DIR}/lib64
+prepend-path PATH ${GCC_DIR}/bin
+prepend-path MANPATH ${GCC_DIR}/man
+prepend-path LD_LIBRARY_PATH ${GCC_DIR}/lib
+prepend-path LD_LIBRARY_PATH ${GCC_DIR}/lib64
+setenv CC ${GCC_DIR}/bin/gcc
+setenv GCC ${GCC_DIR}/bin/gfortran
+setenv F77 ${GCC_DIR}/bin/gfortran
+setenv F90 ${GCC_DIR}/bin/gfortran
 MODULE_FILE
 ) > ${COMPILERS_MODULES}/${NAME}/${VERSION}
