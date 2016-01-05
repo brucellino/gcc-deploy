@@ -1,8 +1,6 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
-
-CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
-module load ci
+module add ci
 #module load ncurses/5.1.3
 module add gmp/5.1.3
 module load mpfr/3.1.2

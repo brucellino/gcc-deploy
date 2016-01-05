@@ -59,4 +59,4 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 --enable-languages=c,c++,fortran,java \
 --disable-multilib
 
-make
+make -j2

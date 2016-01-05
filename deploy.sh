@@ -20,7 +20,7 @@ make distclean
 --with-gmp=${GMP_DIR} \
 --enable-languages=c,c++,fortran,java \
 --disable-multilib
-make
+make -j2 
 make install
 mkdir -p ${COMPILERS_MODULES}/${NAME}
 
@@ -43,7 +43,7 @@ module add mpc
 
 setenv GCC_VERSION $VERSION
 setenv GCC_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-setenv CFLAGS ${CFLAGS} -I$::env(GCC_DIR)/include -L$::env(GCC_DIR)/lib -L$::env(GCC_DIR)/lib64
+setenv CFLAGS "${CFLAGS} -I$::env(GCC_DIR)/include -L$::env(GCC_DIR)/lib -L$::env(GCC_DIR)/lib64"
 prepend-path PATH $::env(GCC_DIR)/bin
 prepend-path MANPATH $::env(GCC_DIR)/man
 prepend-path LD_LIBRARY_PATH $::env(GCC_DIR)/lib
