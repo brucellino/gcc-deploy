@@ -20,7 +20,7 @@ make distclean
 --with-gmp=${GMP_DIR} \
 --enable-languages=c,c++,fortran,java \
 --disable-multilib
-make -j2 
+make -j2
 make install
 mkdir -p ${COMPILERS_MODULES}/${NAME}
 
@@ -34,7 +34,6 @@ proc ModulesHelp { } {
     puts stderr "       This module does nothing but alert the user"
     puts stderr "       that the [module-info name] module is not available"
 }
-prereq mpfr
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/mpc-deploy"
 module add ncurses
 module add gmp
@@ -54,3 +53,11 @@ setenv F77 $::env(GCC_DIR)/bin/gfortran
 setenv F90 $::env(GCC_DIR)/bin/gfortran
 MODULE_FILE
 ) > ${COMPILERS_MODULES}/${NAME}/${VERSION}
+
+echo "Checking modules"
+
+module avail
+module add ${NAME}/${VERSION}
+which gfortran
+gfortran hello-world.f90
+./a.out 
