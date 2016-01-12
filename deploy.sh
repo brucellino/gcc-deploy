@@ -55,9 +55,9 @@ MODULE_FILE
 ) > ${COMPILERS_MODULES}/${NAME}/${VERSION}
 
 echo "Checking modules"
-
+cd ${WORKSPACE}
 module avail
 module add ${NAME}/${VERSION}
 which gfortran
 gfortran hello-world.f90
-./a.out 
+./a.out
