@@ -52,7 +52,7 @@ tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 mkdir ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 ../configure --prefix=${SOFT_DIR} \
---with-ncurses=${ncurses_DIR} \
+--with-ncurses=${NCURSES_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
 --with-gmp=${GMP_DIR} \

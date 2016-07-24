@@ -14,7 +14,7 @@ echo "All tests have passed, will now build into ${SOFT_DIR}"
 echo "Cleaning previous build"
 make distclean
 ../configure --prefix=${SOFT_DIR} \
---with-ncurses=${ncurses_DIR} \
+--with-ncurses=${NCURSES_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
 --with-gmp=${GMP_DIR} \
