@@ -2,9 +2,9 @@
 . /etc/profile.d/modules.sh
 module add ci
 #module load ncurses/5.1.3
-module add gmp/5.1.3
-module load mpfr/3.1.2
-module load mpc/1.0.1
+module add gmp
+module load mpfr
+module load mpc
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 # According to https://gcc.gnu.org/install/test.html
 # should run tests in the objdir of the build.
@@ -25,7 +25,7 @@ module add gmp
 module add mpfr
 module add mpc
 setenv GCC_VERSION $VERSION
-setenv GCC_DIR /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv GCC_DIR $::env(SOFT_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path PATH $::env(GCC_DIR)/include
 prepend-path PATH $::env(GCC_DIR)/bin
 prepend-path MANPATH $::env(GCC_DIR)/man
