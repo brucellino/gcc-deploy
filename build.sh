@@ -7,14 +7,14 @@ module avail
 module add ci
 module list
 module avail
-module add gmp/5.1.3
-module add mpfr/3.1.2
-module add mpc/1.0.1
+module add gmp
+module add mpfr
+module add mpc
 module add ncurses
 echo ${LD_LIBRARY_PATH}
 echo ${PATH}
 
-echo ${MPC_DIR} ${MPC_DIR} ${MPFR_DIR} ${ncurses_DIR}
+echo ${GMP_DIR} ${MPC_DIR} ${MPFR_DIR} ${ncurses_DIR}
 
 echo "REPO_DIR is "
 echo ${REPO_DIR}

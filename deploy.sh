@@ -6,8 +6,8 @@ echo ${SOFT_DIR}
 # Now, dependencies
 module add gmp
 module add mpfr
-module add ncurses
 module add mpc
+module add ncurses
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
