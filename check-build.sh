@@ -27,7 +27,7 @@ module add gmp
 module add mpfr
 module add mpc
 setenv GCC_VERSION $VERSION
-setenv GCC_DIR $::env(SOFT_DIR)
+setenv GCC_DIR /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path PATH $::env(GCC_DIR)/include
 prepend-path PATH $::env(GCC_DIR)/bin
 prepend-path MANPATH $::env(GCC_DIR)/man
