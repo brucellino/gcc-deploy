@@ -18,7 +18,8 @@ make distclean
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
 --with-gmp=${GMP_DIR} \
---enable-languages=c,c++,fortran,java \
+--enable-gnu-unique-object \
+--enable-languages=c,c++,fortran,java,go \
 --disable-multilib
 make -j2
 make install

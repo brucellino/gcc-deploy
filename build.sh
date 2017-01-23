@@ -52,13 +52,14 @@ tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 mkdir ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 ../configure \
+--enable-gnu-unique-object \
 CFLAGS=-fPIC \
 --prefix=${SOFT_DIR} \
 --with-ncurses=${NCURSES_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
 --with-gmp=${GMP_DIR} \
---enable-languages=c,c++,fortran,java \
+--enable-languages=c,c++,fortran,java,go \
 --disable-multilib
 
 make -j2
