@@ -3,8 +3,8 @@
 module add ci
 #module load ncurses/5.1.3
 module add gmp
-module load mpfr
-module load mpc
+module add mpfr
+module add mpc
 module add ncurses
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
