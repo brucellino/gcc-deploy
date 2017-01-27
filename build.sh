@@ -62,4 +62,4 @@ CFLAGS=-fPIC \
 --enable-languages=c,c++,fortran,java,go \
 --disable-multilib
 
-make -j2
+make

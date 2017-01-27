@@ -21,7 +21,7 @@ make distclean
 --enable-gnu-unique-object \
 --enable-languages=c,c++,fortran,java,go \
 --disable-multilib
-make -j2
+make
 make install
 mkdir -p ${COMPILERS_MODULES}/${NAME}
 
