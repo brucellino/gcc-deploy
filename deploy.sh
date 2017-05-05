@@ -30,7 +30,8 @@ rm -rf *
 
 # LIBRARIES var is used by the makefile here, but also set by deploy modulefile
 # We need to override it , or at least unset it temproarily
-LANGUAGES="" ../configure --prefix=${SOFT_DIR} \
+unset LANGUAGES
+../configure --prefix=${SOFT_DIR} \
 --with-ncurses=${NCURSES_DIR} \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \

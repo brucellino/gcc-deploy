@@ -66,7 +66,8 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 
 # LIBRARIES var is used by the makefile here, but also set by deploy modulefile
 # We need to override it , or at least unset it temproarily
-LANGUAGES=""../configure \
+unset LANGUAGES
+../configure \
 --enable-gnu-unique-object \
 CFLAGS=-fPIC \
 --prefix=${SOFT_DIR} \
