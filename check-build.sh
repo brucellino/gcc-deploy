@@ -25,6 +25,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 # According to https://gcc.gnu.org/install/test.html
 # should run tests in the objdir of the build.
 echo "Running CI install to $SOFT_DIR"
+unset LANGUAGES
 make install
 mkdir -p modules
 (
