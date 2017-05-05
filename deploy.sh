@@ -26,7 +26,7 @@ echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 echo "Cleaning previous build"
-rm -rf *
+make distclean
 
 # LIBRARIES var is used by the makefile here, but also set by deploy modulefile
 # We need to override it , or at least unset it temproarily

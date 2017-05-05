@@ -15,7 +15,6 @@
 
 . /etc/profile.d/modules.sh
 module add ci
-#module load ncurses/5.1.3
 module add gmp
 module add mpfr
 module add mpc
@@ -27,6 +26,15 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "Running CI install to $SOFT_DIR"
 unset LANGUAGES
 make install
+
+module purge
+#  We need to get $LIBRARIES back again
+module add ci
+module add gmp
+module add mpfr
+module add mpc
+module add ncurses
+
 mkdir -p modules
 (
 cat <<MODULE_FILE
@@ -37,10 +45,11 @@ proc ModulesHelp { } {
   puts stderr "\\tAdds $NAME ($VERSION.) to your environment."
 }
 module-whatis "Sets the environment for using $NAME ($VERSION.)"
-module add ncurses
 module add gmp
 module add mpfr
 module add mpc
+module add ncurses
+
 setenv GCC_VERSION $VERSION
 setenv GCC_DIR /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path PATH $::env(GCC_DIR)/include
