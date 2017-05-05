@@ -1,4 +1,18 @@
 #!/bin/bash -e
+# Copyright 2016 C.S.I.R. Meraka Institute
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 module add deploy
@@ -23,7 +37,7 @@ make distclean
 --disable-multilib
 make
 make install
-mkdir -p ${COMPILERS_MODULES}/${NAME}
+mkdir -p ${COMPILERS}/${NAME}
 
 # Now, create the module file for deployment
 (
@@ -53,12 +67,26 @@ setenv GCC $::env(GCC_DIR)/bin/gfortran
 setenv F77 $::env(GCC_DIR)/bin/gfortran
 setenv F90 $::env(GCC_DIR)/bin/gfortran
 MODULE_FILE
-) > ${COMPILERS_MODULES}/${NAME}/${VERSION}
+) > ${COMPILERS}/${NAME}/${VERSION}
 
 echo "Checking modules"
 cd ${WORKSPACE}
-module avail
+echo "Testing the module availability"
+module avail ${NAME}/${VERSION}
+
+echo "Testing the module"
+
 module add ${NAME}/${VERSION}
-which gfortran
-gfortran hello-world.f90
-./a.out
+
+echo "Checking gcc"
+which gcc
+
+echo "Checking fortran compile"
+
+gfortran -o hello-fortran hello-world.f90
+echo "running fortran hello world "
+./hello-fortran
+echo "Checking g++ compile"
+g++ -o hello-c++ hello-world.c
+echo "Running C++ hello world"
+./hello-c++
