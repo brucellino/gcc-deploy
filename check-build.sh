@@ -59,7 +59,8 @@ cp modules/${VERSION} ${COMPILERS}/${NAME}
 
 echo "Testing the module availability"
 module avail ${NAME}/${VERSION}
-
+module purge
+module add  deploy
 echo "Testing the module"
 
 module add ${NAME}/${VERSION}

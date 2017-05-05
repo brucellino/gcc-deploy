@@ -17,9 +17,7 @@
 
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
 CPUS=$(cat /proc/cpuinfo |grep "^processor"|wc -l)
-module avail
 module add ci
-module list
 module avail
 module add gmp
 module add mpfr
@@ -65,7 +63,10 @@ tar xzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 # https://gcc.gnu.org/install/configure.html
 mkdir ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
-../configure \
+
+# LIBRARIES var is used by the makefile here, but also set by deploy modulefile
+# We need to override it , or at least unset it temproarily
+LANGUAGES=""../configure \
 --enable-gnu-unique-object \
 CFLAGS=-fPIC \
 --prefix=${SOFT_DIR} \
