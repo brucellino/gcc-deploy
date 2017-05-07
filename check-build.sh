@@ -26,14 +26,10 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "Running CI install to $SOFT_DIR"
 unset LANGUAGES
 make install
-
-module purge
 #  We need to get $LIBRARIES back again
-module add ci
-module add gmp
-module add mpfr
-module add mpc
-module add ncurses
+module refresh
+echo "Checking LANGUAGES var"
+echo ${LANGUAGES}
 
 mkdir -p modules
 (
@@ -69,15 +65,13 @@ cp modules/${VERSION} ${COMPILERS}/${NAME}
 
 echo "Testing the module availability"
 module avail ${NAME}/${VERSION}
-module purge
-module add  deploy
 echo "Testing the module"
 
 module add ${NAME}/${VERSION}
 
 echo "Checking gcc"
 which gcc
-
+cd ${WORKSPACE}
 echo "Checking fortran compile"
 
 gfortran -o hello-fortran hello-world.f90

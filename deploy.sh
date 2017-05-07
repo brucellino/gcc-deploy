@@ -42,7 +42,7 @@ unset LANGUAGES
 make
 make install
 mkdir -p ${COMPILERS}/${NAME}
-
+module refresh
 # Now, create the module file for deployment
 (
 cat <<MODULE_FILE
