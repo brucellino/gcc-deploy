@@ -1,4 +1,5 @@
-[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=gcc-deploy)](https://ci.sagrid.ac.za/job/gcc-deploy)
+[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=gcc-deploy)](https://ci.sagrid.ac.za/job/gcc-deploy) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.572588.svg)](https://doi.org/10.5281/zenodo.572588)
+
 
 # GCC-deploy
 
@@ -48,3 +49,5 @@ _e.g._ :
 # Citing
 
 If you use this compiler in your toolchain, please cite :
+
+Bruce Becker, & Sakhile Masoka. (2017). SouthAfricaDigitalScience/gcc-deploy: CODE-RADE Foundation Release 3 - GCC [Data set]. Zenodo. http://doi.org/10.5281/zenodo.572588
