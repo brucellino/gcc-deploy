@@ -21,6 +21,7 @@ echo ${SOFT_DIR}
 module add gmp
 module add mpfr
 module add mpc
+module add isl
 module add ncurses
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}

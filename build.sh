@@ -21,6 +21,7 @@ module add ci
 module add gmp
 module add mpfr
 module add mpc
+module add isl
 module add ncurses
 echo ${LD_LIBRARY_PATH}
 echo ${PATH}
