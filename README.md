@@ -1,9 +1,8 @@
-[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=gcc-deploy)](https://ci.sagrid.ac.za/job/gcc-deploy) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.572588.svg)](https://doi.org/10.5281/zenodo.572588)
-
-
 # GCC-deploy
 
-This is the repo for build, test and deploy scripts for the [GNU Compiler Collection (GCC)](https://gcc.gnu.org/) for CODE-RADE
+[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=gcc-deploy)](https://ci.sagrid.ac.za/job/gcc-deploy) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.572588.svg)](https://doi.org/10.5281/zenodo.572588)
+
+This is the repository for build, test and deploy scripts for the [GNU Compiler Collection (GCC)](https://gcc.gnu.org/) for CODE-RADE
 
 # Versions
 
@@ -12,18 +11,20 @@ We build the latest stable version of each major release of the compiler chain :
 ## Current versions :
 
   1. 4.9.4
-  1. 5.4.0
-  2. 6.3.0
+  1. 5.5.0
+  1. 6.4.0
+  1. 7.3.0
+  1. 8.2.0 
 
 ## Old versions
 
 There are also a few old modules from previous releases. YMMV.
 
-1. ~~4.9.2~~
-1. ~~5.1.0~~
-1. ~~5.2.0~~
-1. ~~5.3.0~~
-1. ~~6.1.0~~
+  1. ~~4.9.2~~
+  1. ~~5.1.0~~
+  1. ~~5.2.0~~
+  1. ~~5.3.0~~
+  1. ~~6.1.0, 6.3.0~~
 
 Version 7.x is not built yet, due to support for java being removed.
 
