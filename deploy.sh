@@ -21,7 +21,7 @@ echo ${SOFT_DIR}
 module add gmp
 module add mpfr
 module add mpc
-module add isl
+module add isl/0.15
 module add ncurses
 
 echo ${SOFT_DIR}
