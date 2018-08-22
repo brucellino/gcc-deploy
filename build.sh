@@ -75,6 +75,7 @@ CFLAGS=-fPIC \
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
 --with-gmp=${GMP_DIR} \
+--with-isl=${ISL_DIR} \
 --enable-languages=c,c++,fortran,java,go \
 --disable-multilib
 

@@ -45,6 +45,7 @@ module-whatis "Sets the environment for using $NAME ($VERSION.)"
 module add gmp
 module add mpfr
 module add mpc
+module add isl
 module add ncurses
 
 setenv GCC_VERSION $VERSION

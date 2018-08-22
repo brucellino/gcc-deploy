@@ -23,6 +23,7 @@ module add mpfr
 module add mpc
 module add isl
 module add ncurses
+
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
@@ -37,6 +38,7 @@ unset LANGUAGES
 --with-mpfr=${MPFR_DIR} \
 --with-mpc=${MPC_DIR} \
 --with-gmp=${GMP_DIR} \
+--with-isl=${ISL_DIR} \
 --enable-gnu-unique-object \
 --enable-languages=c,c++,fortran,java,go \
 --disable-multilib
