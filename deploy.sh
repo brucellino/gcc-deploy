@@ -13,18 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# this should be run after check-build finishes.
 . /etc/profile.d/modules.sh
 module add deploy
-echo ${SOFT_DIR}
-# Now, dependencies
 module add gmp
 module add mpfr
 module add mpc
 module add isl/0.15
 module add ncurses
 
-echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 echo "Cleaning previous build"
@@ -40,6 +36,7 @@ unset LANGUAGES
 --with-gmp=${GMP_DIR} \
 --with-isl=${ISL_DIR} \
 --enable-gnu-unique-object \
+CFLAGS=-fPIC \
 --enable-languages=c,c++,fortran,java,go \
 --disable-multilib
 make
@@ -57,10 +54,11 @@ proc ModulesHelp { } {
     puts stderr "       that the [module-info name] module is not available"
 }
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/mpc-deploy"
-module add ncurses
 module add gmp
 module add mpfr
 module add mpc
+module add isl/0.15
+module add ncurses
 
 setenv GCC_VERSION $VERSION
 setenv GCC_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
