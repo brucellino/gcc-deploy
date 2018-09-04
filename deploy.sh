@@ -14,7 +14,7 @@
 # limitations under the License.
 
 . /etc/profile.d/modules.sh
-module add ci
+module add deploy
 module add gmp
 module add mpfr
 module add mpc
@@ -22,26 +22,38 @@ module add isl/0.15
 module add ncurses
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
-# According to https://gcc.gnu.org/install/test.html
-# should run tests in the objdir of the build.
-echo "Running CI install to $SOFT_DIR"
-unset LANGUAGES
-make install
-#  We need to get $LIBRARIES back again
-module refresh
-echo "Checking LANGUAGES var"
-echo ${LANGUAGES}
+echo "All tests have passed, will now build into ${SOFT_DIR}"
+echo "Cleaning previous build"
+make distclean
 
-mkdir -p modules
+# LIBRARIES var is used by the makefile here, but also set by deploy modulefile
+# We need to override it , or at least unset it temproarily
+unset LANGUAGES
+../configure --prefix=${SOFT_DIR} \
+--with-ncurses=${NCURSES_DIR} \
+--with-mpfr=${MPFR_DIR} \
+--with-mpc=${MPC_DIR} \
+--with-gmp=${GMP_DIR} \
+--with-isl=${ISL_DIR} \
+--enable-gnu-unique-object \
+CFLAGS=-fPIC \
+--enable-languages=c,c++,fortran,java,go \
+--disable-multilib
+make
+make install
+mkdir -p ${COMPILERS}/${NAME}
+module refresh
+# Now, create the module file for deployment
 (
 cat <<MODULE_FILE
 #%Module1.0
 ## $NAME modulefile
 ##
 proc ModulesHelp { } {
-  puts stderr "\\tAdds $NAME ($VERSION.) to your environment."
+    puts stderr "       This module does nothing but alert the user"
+    puts stderr "       that the [module-info name] module is not available"
 }
-module-whatis "Sets the environment for using $NAME ($VERSION.)"
+module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/mpc-deploy"
 module add gmp
 module add mpfr
 module add mpc
@@ -49,31 +61,31 @@ module add isl/0.15
 module add ncurses
 
 setenv GCC_VERSION $VERSION
-setenv GCC_DIR /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
-prepend-path PATH $::env(GCC_DIR)/include
+setenv GCC_DIR $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv CFLAGS "${CFLAGS} -I$::env(GCC_DIR)/include -L$::env(GCC_DIR)/lib -L$::env(GCC_DIR)/lib64"
 prepend-path PATH $::env(GCC_DIR)/bin
 prepend-path MANPATH $::env(GCC_DIR)/man
 prepend-path LD_LIBRARY_PATH $::env(GCC_DIR)/lib
 prepend-path LD_LIBRARY_PATH $::env(GCC_DIR)/lib64
 setenv CC $::env(GCC_DIR)/bin/gcc
-setenv GCC $::env(GCC_DIR)/bin/gcc
-setenv FC $::env(GCC_DIR)/bin/gfortran
+setenv GCC $::env(GCC_DIR)/bin/gfortran
 setenv F77 $::env(GCC_DIR)/bin/gfortran
 setenv F90 $::env(GCC_DIR)/bin/gfortran
 MODULE_FILE
-) > modules/${VERSION}
-mkdir -p ${COMPILERS}/${NAME}
-cp modules/${VERSION} ${COMPILERS}/${NAME}
+) > ${COMPILERS}/${NAME}/${VERSION}
 
+echo "Checking modules"
+cd ${WORKSPACE}
 echo "Testing the module availability"
 module avail ${NAME}/${VERSION}
+
 echo "Testing the module"
 
 module add ${NAME}/${VERSION}
 
 echo "Checking gcc"
 which gcc
-cd ${WORKSPACE}
+
 echo "Checking fortran compile"
 
 gfortran -o hello-fortran hello-world.f90
